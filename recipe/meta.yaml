@@ -32,7 +32,6 @@ test:
     - pytest -v test
   requires:
     - pip
-    - python
     - pytest
 
 about:
