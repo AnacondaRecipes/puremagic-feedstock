@@ -1,17 +1,18 @@
 {% set name = "puremagic" %}
-{% set version = "1.28" %}
+{% set version = "2.2.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 195893fc129657f611b86b959aab337207d6df7f25372209269ed9e303c1a8c0
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: eb4bddf07c177c4b434554b92165b67449f5a51e152b976202d6254498810eef
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [py<312]
 
 requirements:
   host:
@@ -19,6 +20,8 @@ requirements:
     - python
     - wheel
     - setuptools
+    - setuptools-scm >=6.2
+    - tomli
   run:
     - python
 
